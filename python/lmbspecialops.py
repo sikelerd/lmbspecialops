@@ -38,8 +38,14 @@ replace_nonfinite = lmbspecialopslib.replace_nonfinite
 scale_invariant_gradient = lmbspecialopslib.scale_invariant_gradient
 warp2d = lmbspecialopslib.warp2d
 transfer_key_frame2 = lmbspecialopslib.transfer_key_frame2
-rotation_matrix_to_angle_axis = lmbspecialopslib.rotation_matrix_to_angle_axis
-angle_axis_to_rotation_matrix = lmbspecialopslib.angle_axis_to_rotation_matrix 
+
+
+def angle_axis_to_rotation_matrix(angle_axis):
+    return tf.map_fn(lmbspecialopslib.angle_axis_to_rotation_matrix, angle_axis)
+
+
+def rotation_matrix_to_angle_axis(rotation):
+    return tf.map_fn(lmbspecialopslib.rotation_matrix_to_angle_axis, rotation)
 
 
 def warp2d_tf(input, displacements, normalized=None, border_mode=None, name=None ):
