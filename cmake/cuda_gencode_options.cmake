@@ -24,7 +24,7 @@ if( GENERATE_KEPLER_SM37_CODE )
         list( APPEND CUDA_GENCODE_STRING "-gencode=arch=compute_37,code=sm_37" )
 endif()
 
-option( GENERATE_MAXWELL_SM50_CODE "This will generate code for the Maxwell GPU architecture (sm_50)" OFF )
+option( GENERATE_MAXWELL_SM50_CODE "This will generate code for the Maxwell GPU architecture (sm_50)" ON )
 if( GENERATE_MAXWELL_SM50_CODE )
         list( APPEND CUDA_GENCODE_STRING "-gencode=arch=compute_50,code=sm_50" )
 endif()

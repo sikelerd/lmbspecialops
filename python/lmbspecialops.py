@@ -20,7 +20,7 @@ from tensorflow.python.framework import ops
 import os
 import warnings
 
-_lib_path = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..', 'build', 'lib', 'lmbspecialops.so'))
+_lib_path = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..', 'lib', 'lmbspecialops.so'))
 if not os.path.isfile(_lib_path):
     raise ValueError(
         'Cannot find lmbspecialops.so . Set the environment variable LMBSPECIALOPS_LIB to the path to lmbspecialops.so file')
