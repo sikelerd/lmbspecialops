@@ -7,3 +7,12 @@ release
 debug
 CMakeCache.txt
 CMakeFiles
+CTestTestfile.cmake
+cmake_install.cmake
+doc/CTestTestfile.cmake
+doc/cmake_install.cmake
+lib/
+lz4/
+test/CTestTestfile.cmake
+test/cmake_install.cmake
+webp/
