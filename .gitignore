@@ -16,3 +16,4 @@ lz4/
 test/CTestTestfile.cmake
 test/cmake_install.cmake
 webp/
+*__pycache__*
