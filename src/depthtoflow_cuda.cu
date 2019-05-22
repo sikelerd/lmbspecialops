@@ -160,6 +160,7 @@ void depthtoflow_gpu(
           translation,
           depth_x_size, depth_y_size, depth_z_size, depth_x_size*depth_y_size,
           1.0/depth_x_size, 1.0/depth_y_size );
+      cudaDeviceSynchronize();
       CHECK_CUDA_ERROR
     }
     else
@@ -171,6 +172,7 @@ void depthtoflow_gpu(
           translation,
           depth_x_size, depth_y_size, depth_z_size, depth_x_size*depth_y_size,
           1.0/depth_x_size, 1.0/depth_y_size );
+      cudaDeviceSynchronize();
       CHECK_CUDA_ERROR
     }
   }
@@ -185,6 +187,7 @@ void depthtoflow_gpu(
           translation,
           depth_x_size, depth_y_size, depth_z_size, depth_x_size*depth_y_size,
           1.0/depth_x_size, 1.0/depth_y_size );
+      cudaDeviceSynchronize();
       CHECK_CUDA_ERROR
     }
     else
@@ -196,6 +199,7 @@ void depthtoflow_gpu(
           translation,
           depth_x_size, depth_y_size, depth_z_size, depth_x_size*depth_y_size,
           1.0/depth_x_size, 1.0/depth_y_size );
+      cudaDeviceSynchronize();
       CHECK_CUDA_ERROR
     }
   }
@@ -355,7 +359,6 @@ public:
             w_size,
             normalize_flow,
             inverse_depth );
-      cudaDeviceSynchronize();
     }
 
 

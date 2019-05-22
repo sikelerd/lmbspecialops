@@ -84,9 +84,15 @@ void angleaxis_to_rotmatrix_gpu(
   grid.z = 1;
 
   if( column_major )
+  {
     angleaxis_to_rotmatrix_kernel<T,true><<<grid,block,0,stream>>>( out, in, size );
+    cudaDeviceSynchronize();
+  }
   else
+  {
     angleaxis_to_rotmatrix_kernel<T,false><<<grid,block,0,stream>>>( out, in, size );
+    cudaDeviceSynchronize();
+  }
   CHECK_CUDA_ERROR
 }
 template void angleaxis_to_rotmatrix_gpu<float>(const cudaStream_t&, float*, const float*, int, bool);

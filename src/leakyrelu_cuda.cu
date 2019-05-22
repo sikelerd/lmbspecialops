@@ -101,7 +101,6 @@ public:
         input.data(),
         leak,
         size);
-    cudaDeviceSynchronize();
   }
 
 
@@ -118,6 +117,7 @@ public:
     grid.z = 1;
 
     leakyrelu_kernel<T><<<grid,block,0,stream>>>(out, in, leak, size);
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR;
   }
 
@@ -189,6 +189,7 @@ public:
     grid.z = 1;
 
     leakyrelu_grad_kernel<T><<<grid,block,0,stream>>>(out, in, grad, leak, size);
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR;
   }
 

@@ -91,7 +91,6 @@ public:
         input.data(),
         value,
         size);
-    cudaDeviceSynchronize();
   }
 
   void replacenonfinite_gpu( 
@@ -107,6 +106,7 @@ public:
     grid.z = 1;
 
     replacenonfinite_kernel<T><<<grid,block,0,stream>>>(out, in, value, size);
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR;
   }
 
@@ -175,6 +175,7 @@ public:
     grid.z = 1;
 
     replacenonfinite_grad_kernel<T><<<grid,block,0,stream>>>(out, in, grad, size);
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR;
   }
 

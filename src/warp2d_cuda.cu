@@ -176,7 +176,6 @@ public:
         border_mode,
         normalized,
         x_size, y_size, z_size, w_size );
-    cudaDeviceSynchronize();
   }
 
   void warp2d_gpu( 
@@ -195,24 +194,36 @@ public:
     if( normalized )
     {
       if( border_mode == CLAMP )
+      {
         warp2d_kernel<T,true,CLAMP><<<grid,block,0,stream>>>(
             out, in, displacements, border_value,
             x_size, y_size, z_size, w_size);
+        cudaDeviceSynchronize();
+      }
       else
+      {
         warp2d_kernel<T,true,VALUE><<<grid,block,0,stream>>>(
             out, in, displacements, border_value,
             x_size, y_size, z_size, w_size);
+        cudaDeviceSynchronize();
+      }
     }
     else
     {
       if( border_mode == CLAMP )
+      {
         warp2d_kernel<T,false,CLAMP><<<grid,block,0,stream>>>(
             out, in, displacements, border_value,
             x_size, y_size, z_size, w_size);
+        cudaDeviceSynchronize();
+      }
       else
+      {
         warp2d_kernel<T,false,VALUE><<<grid,block,0,stream>>>(
             out, in, displacements, border_value,
             x_size, y_size, z_size, w_size);
+        cudaDeviceSynchronize();
+      }
     }
 
     CHECK_CUDA_ERROR;

@@ -278,7 +278,6 @@ public:
         input_shape.dim_size(input_rank-1),
         input_shape.dim_size(input_rank-2),
         w_size );
-    cudaDeviceSynchronize();
   }
 
 
@@ -302,6 +301,7 @@ public:
         x_size, y_size, z_size, 
         epsilon,
         deltas, weights, num_deltas );
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR
   }
 
@@ -433,6 +433,7 @@ public:
         out, in, grad, 
         x_size, y_size, z_size, eps,
         deltas, weights, num_deltas );
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR
   }
 

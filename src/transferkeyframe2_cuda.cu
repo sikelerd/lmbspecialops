@@ -253,6 +253,7 @@ namespace transferkeyframe2_internal
           rotation,
           translation,
           x_size, y_size, w_size, x_size*y_size);
+      cudaDeviceSynchronize();
     }
     else if( !inverse_depth && pass_near )
     {
@@ -262,6 +263,7 @@ namespace transferkeyframe2_internal
           rotation,
           translation,
           x_size, y_size, w_size, x_size*y_size);
+      cudaDeviceSynchronize();
     }
     else if( inverse_depth && !pass_near )
     {
@@ -271,6 +273,7 @@ namespace transferkeyframe2_internal
           rotation,
           translation,
           x_size, y_size, w_size, x_size*y_size);
+      cudaDeviceSynchronize();
     }
     else// if( !inverse_depth && !pass_near )
     {
@@ -280,6 +283,7 @@ namespace transferkeyframe2_internal
           rotation,
           translation,
           x_size, y_size, w_size, x_size*y_size);
+      cudaDeviceSynchronize();
     }
     CHECK_CUDA_ERROR
   }
@@ -309,6 +313,7 @@ namespace transferkeyframe2_internal
 
     setval_kernel<T><<<grid,block,0,stream>>>(
         out, val, x_size, y_size, z_size );
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR
   }
   template void setval_gpu<float>(const cudaStream_t&, float*, float, int, int, int);
@@ -355,6 +360,7 @@ namespace transferkeyframe2_internal
 
     normalize_image_kernel<T><<<grid,block,0,stream>>>(
         image, sum, x_size, y_size, z_size, w_size );
+    cudaDeviceSynchronize();
     CHECK_CUDA_ERROR
   }
   template void normalize_image_gpu<float>(const cudaStream_t&, float*, float*, int, int, int, int);
@@ -492,6 +498,7 @@ namespace transferkeyframe2_internal
           translation,
           image_x_size, image_y_size, image_z_size, image_w_size,
           depth_visible_threshold);
+      cudaDeviceSynchronize();
     }
     else if( !inverse_depth && pass_near )
     {
@@ -502,6 +509,7 @@ namespace transferkeyframe2_internal
           translation,
           image_x_size, image_y_size, image_z_size, image_w_size,
           depth_visible_threshold);
+      cudaDeviceSynchronize();
     }
     else if( inverse_depth && !pass_near )
     {
@@ -512,6 +520,7 @@ namespace transferkeyframe2_internal
           translation,
           image_x_size, image_y_size, image_z_size, image_w_size,
           depth_visible_threshold);
+      cudaDeviceSynchronize();
     }
     else// if( !inverse_depth && !pass_near )
     {
@@ -522,6 +531,7 @@ namespace transferkeyframe2_internal
           translation,
           image_x_size, image_y_size, image_z_size, image_w_size,
           depth_visible_threshold);
+      cudaDeviceSynchronize();
     }
 
     CHECK_CUDA_ERROR
@@ -784,8 +794,6 @@ public:
         image_shape.dim_size(image_rank-2),
         image_shape.dim_size(image_rank-3),
         w_size );
-
-    cudaDeviceSynchronize();
   }
 
 

@@ -173,7 +173,6 @@ public:
         depth_shape.dim_size(depth_rank-1),
         depth_shape.dim_size(depth_rank-2),
         w_size );
-    cudaDeviceSynchronize();
   }
 
 
@@ -191,11 +190,17 @@ public:
     grid.z = divup(z_size,block.z);
 
     if( inverse_depth )
+    {
       depthtonormals_kernel<T,true><<<grid,block,0,stream>>>(
           out, depth, intrinsics, x_size, y_size, z_size );
+      cudaDeviceSynchronize();
+    }
     else
+    {
       depthtonormals_kernel<T,false><<<grid,block,0,stream>>>(
           out, depth, intrinsics, x_size, y_size, z_size );
+      cudaDeviceSynchronize();
+    }
 
     CHECK_CUDA_ERROR;
   }

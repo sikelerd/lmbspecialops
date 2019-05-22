@@ -138,7 +138,6 @@ public:
         input_shape.dim_size(rank-2),
         input_shape.dim_size(rank-1)
         );
-    cudaDeviceSynchronize();
   }
 
   void median3x3downsample_gpu( 
@@ -163,6 +162,7 @@ public:
         out_x_size, out_y_size, out_xy_size,
         in_x_size, in_y_size, in_xy_size
         );
+    cudaDeviceSynchronize();
   }
 
 private:
