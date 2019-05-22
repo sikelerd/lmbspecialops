@@ -173,7 +173,7 @@ public:
         depth_shape.dim_size(depth_rank-1),
         depth_shape.dim_size(depth_rank-2),
         w_size );
-    
+    cudaDeviceSynchronize();
   }
 
 

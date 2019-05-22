@@ -355,9 +355,10 @@ public:
             w_size,
             normalize_flow,
             inverse_depth );
+      cudaDeviceSynchronize();
     }
 
-    
+
   }
 
 

@@ -101,7 +101,7 @@ public:
         input.data(),
         leak,
         size);
-    
+    cudaDeviceSynchronize();
   }
 
 

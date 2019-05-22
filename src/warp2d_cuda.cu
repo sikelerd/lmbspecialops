@@ -176,7 +176,7 @@ public:
         border_mode,
         normalized,
         x_size, y_size, z_size, w_size );
-    
+    cudaDeviceSynchronize();
   }
 
   void warp2d_gpu( 

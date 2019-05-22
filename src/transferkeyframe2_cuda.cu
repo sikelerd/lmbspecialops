@@ -523,6 +523,7 @@ namespace transferkeyframe2_internal
           image_x_size, image_y_size, image_z_size, image_w_size,
           depth_visible_threshold);
     }
+
     CHECK_CUDA_ERROR
   }
 
@@ -784,7 +785,7 @@ public:
         image_shape.dim_size(image_rank-3),
         w_size );
 
-    
+    cudaDeviceSynchronize();
   }
 
 

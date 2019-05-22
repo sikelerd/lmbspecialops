@@ -278,7 +278,7 @@ public:
         input_shape.dim_size(input_rank-1),
         input_shape.dim_size(input_rank-2),
         w_size );
-    
+    cudaDeviceSynchronize();
   }
 
 

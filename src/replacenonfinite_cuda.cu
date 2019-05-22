@@ -91,7 +91,7 @@ public:
         input.data(),
         value,
         size);
-    
+    cudaDeviceSynchronize();
   }
 
   void replacenonfinite_gpu( 
